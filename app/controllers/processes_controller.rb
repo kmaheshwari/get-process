@@ -9,6 +9,15 @@ class ProcessesController < ApplicationController
     # 1)process_name: name of the process if want to search
     # 2)order_by: asc/desc(Ascending/Descending)
     # 3)sort_by: name of column to sort by (default: resident_size)
+    # CURL: 
+    # 1) List:
+    # curl -H "Authorization: Token token=WCZZYjnOQFUYfJIN2ShH1iD24UHo58A6TI" http://localhost:3000/processes
+    # 2) Search:
+    # curl -H "Authorization: Token token=WCZZYjnOQFUYfJIN2ShH1iD24UHo58A6TI" 'http://localhost:3000/processes?search_by=google'
+    # 3) Order by memory
+    # curl -H "Authorization: Token token=WCZZYjnOQFUYfJIN2ShH1iD24UHo58A6TI" 'http://localhost:3000/processes?search_by=google&order_by=desc'
+    # 4) Sort by memory
+    # curl -H "Authorization: Token token=WCZZYjnOQFUYfJIN2ShH1iD24UHo58A6TI" 'http://localhost:3000/processes?search_by=google&order_by=desc&sort_by=virtual_size'
 
     processes = []
     search_by = params[:search_by]
@@ -38,6 +47,8 @@ class ProcessesController < ApplicationController
     # get detail of a single process.
     # params:
     # 1)id: id of the process of which detail is required
+    # CURL:
+    # curl -H "Authorization: Token token=WCZZYjnOQFUYfJIN2ShH1iD24UHo58A6TI" 'http://localhost:3000/process_detail/261'
 
     process_id = params[:id].to_i
 
